@@ -15,14 +15,16 @@
 # Inherit from those products. Most specific first.
 $(call inherit-product, device/xiaomi/raphael/msmnile.mk)
 
-# Inherit some common PixelExperience stuff.
-$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
+# Inherit some common Cygnus stuff.
+$(call inherit-product, vendor/cygnus/configs/common.mk)
+$(call inherit-product, device/qcom/common/common.mk)
+include vendor/qcom/common/perf/qti-perf.mk
 
 TARGET_BOOT_ANIMATION_RES := 1080
 TARGET_GAPPS_ARCH := arm64
 
 # Device identifier. This must come after all inclusions.
-PRODUCT_NAME := aosp_raphael
+PRODUCT_NAME := cygnus_raphael
 PRODUCT_DEVICE := raphael
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MODEL := MI 9T Pro
@@ -33,3 +35,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="raphael"
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+TARGET_BOOT_ANIMATION_RES := 1080
+
+CYGNUS_BUILD_TYPE := OFFICIAL
